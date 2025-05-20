@@ -28,6 +28,64 @@
         <p>Buy and sell niche products with ease!</p>
     </section>
 
+ <section class="product-section">
+    <h2 class="product-category">Best Selling</h2>
+    <div class="carousel-wrapper">
+        <button class="pre-btn"><img src="arrow.png" alt="Previous"></button>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="book1.jpg" class="product-thumb" alt="Product Image">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">BRAND</h2>
+                    <p class="product-short-description">a short line about the product</p>
+                    <span class="price">$50</span>
+                    <span class="actual-price">$70</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="product2.jpg" class="product-thumb" alt="Product Image 2">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">ANOTHER BRAND</h2>
+                    <p class="product-short-description">A cool new product.</p>
+                    <span class="price">$80</span>
+                    <span class="actual-price">$100</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="book3.jpg" class="product-thumb" alt="Book 3">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">BEST SELLER</h2>
+                    <p class="product-short-description">This is a great product.</p>
+                    <span class="price">$45</span>
+                    <span class="actual-price">$55</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="book4.jpg" class="product-thumb" alt="Book 4">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">TOP PICK</h2>
+                    <p class="product-short-description">Highly recommended product.</p>
+                    <span class="price">$75</span>
+                    <span class="actual-price">$90</span>
+                </div>
+            </div>
+        </div>
+        <button class="nxt-btn"><img src="arrow.png" alt="Next"></button>
+    </div>
+    </section>
+    
     <section id="products">
         <h2>Products</h2>
         <input type="text" id="search-bar" placeholder="Search for products..." onkeyup="searchProducts()">
@@ -111,8 +169,6 @@
         <h2>Checkout</h2>
         <p>Review your cart and enter your details.</p>
         <form id="checkout-form">
-            <input type="text" id="name" placeholder="Full Name" required>
-            <input type="email" id="email" placeholder="Email" required>
             <input type="text" id="address" placeholder="Shipping Address" required>
             <p>Total: ₱<span id="checkout-total">0</span></p>
             <button type="submit">Place Order</button>

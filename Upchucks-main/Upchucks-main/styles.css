@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #FCD225;
+    background: #ffcc00;
     color: #fff;
     text-align: center;
     animation: blendBackground 10s infinite alternate;
@@ -22,7 +22,6 @@ header {
 .logo {
     width: 215px;
     float: left;
-
 }
 
 .logo2 {
@@ -73,18 +72,13 @@ section {
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 14px;
+    text-align: left;
+    padding-left: 10px;
 }
 
 #user-products {
     text-align: center;
 }
-
-.product {
-    display: inline-block;
-    margin: 10px;
-    vertical-align: top;
-}
-
 
 /* Product & Sell Item */
 .product, .sell-item {
@@ -104,7 +98,6 @@ section {
     display: block;
     margin: 0 auto;
     max-width: 100px;
-    height: auto;
     border-radius: 10px;
 }
 
@@ -136,20 +129,26 @@ input, select {
     width: 80%;
 }
 
-/* Cart */
+/* Cart - MODIFIED FOR MINIMIZATION & CENTERING */
 .cart-item {
     display: flex;
     justify-content: space-between;
-    width: 40%;
-    padding: 8px;
-    margin: 10px auto;
-    background: #ffcc00;
+    align-items: center;
+    width: 90%; /* MODIFIED: Increased width to fill more of the container, but still less than 100% to allow for gap/centering */
+    max-width: 300px; /* MODIFIED: Adjusted max-width to control overall size */
+    padding: 6px 10px;
+    margin: 8px auto; /* Kept auto margin for individual centering if not using flex-wrap perfectly */
+    background: #444;
+    color: #fff;
     border-radius: 5px;
+    font-size: 0.9em;
 }
 
 .cart-item button {
     background: #ffcc00;
     color: #000;
+    padding: 5px 10px;
+    font-size: 0.8em;
 }
 
 .cart-item button:hover {
@@ -157,22 +156,43 @@ input, select {
     color: #000;
 }
 
-
-
 /* Heading */
 h1 {
     font-family: Merriweather, serif;
     animation: bounce 1s ease;
 }
 
-/* Responsive Design */
+/* Responsive - MINIMIZED ON SMALL SCREENS */
 @media screen and (max-width: 600px) {
-    section {
-        padding: 20px;
-    }
-    
     .product, .sell-item {
         width: 80%;
+    }
+    .cart-item {
+        width: 95%; /* MODIFIED: Even wider on small screens to fill space */
+        max-width: unset;
+        font-size: 0.85em;
+    }
+    .cart-item button {
+        padding: 4px 8px;
+        font-size: 0.75em;
+    }
+    .product-card {
+        width: 180px;
+        height: 350px;
+        margin-right: 20px;
+    }
+    .product-image {
+        height: 250px;
+    }
+    .carousel-wrapper {
+        padding: 0 10px;
+    }
+    .pre-btn, .nxt-btn {
+        width: 40px;
+    }
+    .pre-btn img, .nxt-btn img {
+        width: 20px;
+        height: 20px;
     }
 }
 
@@ -183,55 +203,52 @@ h1 {
     75% { transform: translateY(-5px); }
 }
 
-.sell-section input {
-    width: 150px;  /* Adjust input width */
-    padding: 8px;  /* Reduce padding */
+/* Sell Section */
+.sell-section input,
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="file"] {
+    width: 150px;
+    padding: 10px;
     margin: 5px;
+    font-size: 14px;
     border-radius: 5px;
     border: 1px solid #ccc;
     text-align: center;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="email"],
-input[type="file"] {
-    width: 150px; /* Adjust width to make them smaller */
-    padding: 10px;
-    margin: 5px;
-    font-size: 14px; /* Reduce text size */
+input::placeholder {
+    font-size: 12px;
 }
 
-input[type="text"]::placeholder,
-input[type="number"]::placeholder,
-input[type="email"]::placeholder {
-    font-size: 12px; /* Reduce placeholder text size */
-}
-
-input[type="file"] {
-    width: 150;/* Let file input remain its natural width */
-}
-
-#cart {
-    text-align: center;
+/* Cart Container - ENSURE ITEMS ARE CENTERED */
+#cart-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Ensures the .cart-container itself is centered within #cart-section */
+    text-align: center;
 }
 
 .cart-container {
-    max-height: 250px; /* Fixed height for scrolling */
-    overflow-y: auto; /* Enable vertical scrolling */
+    display: flex;
+    justify-content: center; /* This centers the flex items (cart-item) horizontally */
+    flex-wrap: wrap;
+    gap: 10px;
+    max-height: 200px;
+    overflow-y: auto;
     padding: 10px;
     border: 2px solid #000;
     background: #ffcc00;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-    width: 100%;
-    max-width: 500px;
+    width: 100%; /* Ensure it takes full available width within its flex parent */
+    max-width: 400px;
+    /* ADDED: Centering the cart-container itself within its parent if it doesn't take 100% width */
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Optional: Custom scrollbar */
 .cart-container::-webkit-scrollbar {
     width: 8px;
 }
@@ -245,35 +262,24 @@ input[type="file"] {
     background: #ffcc00;
 }
 
-/* Style for cart items */
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    background: #444;
-    color: #fff;
-    border-radius: 5px;
-    margin: 5px 0;
-}
-
-.cart-item span {
-    flex-grow: 1;
-    text-align: left;
-}
-
 .quantity-controls {
     display: flex;
     align-items: center;
+    margin-left: 10px;
+}
+
+.quantity-controls button,
+.remove-btn {
+    padding: 3px 6px;
+    margin: 0 3px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8em;
 }
 
 .quantity-controls button {
     background: #ffcc00;
-    border: none;
-    padding: 5px;
-    margin: 0 5px;
-    cursor: pointer;
-    border-radius: 5px;
 }
 
 .quantity-controls button:hover {
@@ -283,8 +289,175 @@ input[type="file"] {
 .remove-btn {
     background: red;
     color: white;
+}
+
+/* Product Carousel - MODIFIED FOR BETTER FIT */
+.product-section {
+    padding: 15px 0;
+    background-color: #ffcc00;
+    border-radius: 8px;
+    margin: 15px auto;
+    max-width: 90%;
+    box-sizing: border-box;
+}
+
+.product-category {
+    padding: 0 5vw;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 380px;
+    overflow: hidden;
+    padding: 0 30px;
+    box-sizing: border-box;
+    width: calc(100% - 60px);
+    margin: 0 auto;
+}
+
+.product-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    flex-grow: 1;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.product-container::-webkit-scrollbar {
+    display: none;
+}
+
+.product-card {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 380px;
+    margin-right: 30px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.product-image {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.product-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.card-btn {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    padding: 8px;
     border: none;
-    padding: 5px;
+    border-radius: 4px;
+    background: #fff;
     cursor: pointer;
-    border-radius: 5px;
+    opacity: 0;
+    transition: 0.5s;
+    font-size: 0.85em;
+}
+
+.product-image:hover .card-btn {
+    opacity: 1;
+}
+
+.card-btn:hover {
+    background: #009688;
+    color: #fff;
+}
+
+.product-info {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.product-brand {
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    font-size: 0.9em;
+}
+
+.product-short-description {
+    font-size: 0.8em;
+}
+
+.price {
+    font-weight: bold;
+    color: #e60000;
+    margin-right: 3px;
+    font-size: 0.95em;
+}
+
+.actual-price {
+    color: #777;
+    text-decoration: line-through;
+    font-size: 0.75em;
+}
+
+/* Carousel Buttons */
+.pre-btn, .nxt-btn {
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    z-index: 9;
+    transition: background 0.3s ease;
+    outline: none;
+}
+
+.pre-btn {
+    left: 0;
+    background: linear-gradient(90deg, #fff 0%, #fff8 50%, transparent 100%);
+}
+
+.nxt-btn {
+    right: 0;
+    background: linear-gradient(90deg, transparent 0%, #fff8 50%, #fff 100%);
+}
+
+.pre-btn img, .nxt-btn img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.pre-btn img {
+    transform: rotate(180deg);
+}
+
+.pre-btn:hover, .nxt-btn:hover {
+    background: #fff;
 }
